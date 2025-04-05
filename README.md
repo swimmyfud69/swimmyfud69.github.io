@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -109,10 +109,10 @@
         </p>
     </div>
 
-    
+    <!-- YouTube Player -->
     <div id="youtube-player"></div>
     
-  
+    <!-- Music control button -->
     <div class="music-control" id="music-toggle">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 18V5l12-2v13"></path>
@@ -121,9 +121,9 @@
         </svg>
     </div>
 
-   
+    <!-- Load YouTube API -->
     <script>
-        
+        // Load the YouTube API
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -212,18 +212,18 @@
             
             addRandomFloat();
             
-           
+            // Add mouse follow effect
             document.addEventListener('mousemove', (e) => {
                 const x = e.clientX / window.innerWidth;
                 const y = e.clientY / window.innerHeight;
                 
                 logo.style.transform = `translate(${(x - 0.5) * 40}px, ${(y - 0.5) * 40}px)`;
                 
-             
+                // Create particles on mouse move
                 createParticle(e.clientX, e.clientY);
             });
             
-           
+            // Create floating particles
             function createParticle(x, y) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
@@ -238,22 +238,22 @@
                 particle.style.opacity = '0.7';
                 particle.style.animation = `float ${duration}s ease-in-out infinite`;
                 
-               
+                // Random RGB color
                 const hue = Math.floor(Math.random() * 360);
                 particle.style.backgroundColor = `hsl(${hue}, 100%, 70%)`;
                 
                 document.body.appendChild(particle);
                 
-                s
+                // Remove particle after animation completes
                 setTimeout(() => {
                     particle.remove();
                 }, duration * 1000);
             }
             
-           
+            // Music control
             musicToggle.addEventListener('click', togglePlayback);
             
-           
+            // Add keyboard shortcut for music control (Space)
             document.addEventListener('keydown', (e) => {
                 if (e.code === 'Space') {
                     e.preventDefault();
